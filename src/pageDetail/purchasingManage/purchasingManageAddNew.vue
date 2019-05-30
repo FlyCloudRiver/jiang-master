@@ -17,22 +17,20 @@
           <el-button @click="getList">查询</el-button>
         </el-form-item>
       </el-form>
+
+      <!--表格-->
       <el-table :data="dataList" style="width: 100%" border @selection-change="selection">
         <el-table-column label="序号" type="index" width="80"></el-table-column>
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column label="商品名" prop="goodsName"></el-table-column>
+        <el-table-column label="商品编号" prop="goodsCode">
 
-        <el-table-column label="商类类别" prop="name">
-          <template slot-scope="scope">
-            <div>
-              <span>{{scope.row.categoryId}}</span>
-            </div>
-          </template>
         </el-table-column>
-        <!-- <el-table-column label="生产日期" prop="goodsDate"></el-table-column> -->
+        <el-table-column label="商类类别" prop="categoryName">
 
-        <el-table-column label="单价" prop="goodsPrice"></el-table-column>
-        <!-- <el-table-column label="保质期" prop="goodsShelfLife"></el-table-column> -->
+        </el-table-column>
+        <el-table-column label="商品单价" prop="goodsPrice"></el-table-column>
+
       </el-table>
     </div>
     <!-- 确认出库单 -->
@@ -45,27 +43,7 @@
         ref="postData"
         :rules="rules"
       >
-        <!-- <el-form-item label="发货仓库:">
-          <span></span>
-        </el-form-item>-->
-        <!-- <el-form-item label="操作人:" prop="person">
-          <el-input v-model="postData.person"></el-input>
-        </el-form-item> -->
-        <!-- <el-form-item label="订单编号:" prop="purchaseCode">
-          <el-input v-model="postData.purchaseCode"></el-input>
-        </el-form-item> -->
-        <!-- <el-form-item label="收货人电话:">
-          <el-input></el-input>
-        </el-form-item>
-        <el-form-item label="收货人地址：">
-          <el-input></el-input>
-        </el-form-item>
-        <el-form-item label="详细地址：">
-          <el-input></el-input>
-        </el-form-item>
-        <el-form-item label="到货时间：">
-          <el-input></el-input>
-        </el-form-item>-->
+
       </el-form>
       <el-table :data="theSelection" style="width: 100%" border>
         <el-table-column label="序号" type="index" width="80"></el-table-column>
@@ -82,12 +60,8 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="商类类别" prop="name">
-          <template slot-scope="scope">
-            <div>
-              <span>{{scope.row.categoryId}}</span>
-            </div>
-          </template>
+        <el-table-column label="商类类别" prop="categoryName">
+
         </el-table-column>
         <el-table-column label="单价" prop="goodsPrice"></el-table-column>
 

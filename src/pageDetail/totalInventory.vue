@@ -18,11 +18,11 @@
       <el-table-column label="操作" width="180">
         <template slot-scope='scope'>
           <div>
-            <el-button type="text" @click="detailBtn(scope.row.id)">查看</el-button>
+            <el-button type="text" @click="detailBtn(scope.row.goodsDTO.id)">查看</el-button>
           </div>
         </template>
       </el-table-column>
-    
+
       <el-table-column label="商品名称" prop="name">
         <template slot-scope="scope">
           <div>
@@ -33,6 +33,7 @@
       <el-table-column label="库存数量" prop="amount"></el-table-column>
       <el-table-column label="更新时间" prop="updateTime"></el-table-column>
     </el-table>
+
   </div>
 </template>
 <script>
@@ -42,10 +43,10 @@ export default {
   data() {
     return {
       theQuery: {
-       
+
         pageNum: 1,
-        pageSize: 20,
-       
+        pageSize: 7,
+
       },
       dataList: [
       ]
@@ -59,13 +60,6 @@ export default {
       axios.post(storeroomSelect+'?pageNum='+this.theQuery.pageNum+'&pageSize='+this.theQuery.pageSize).then(data => {
         console.log(data);
         this.dataList=data.content
-      });
-    },
-    //新增
-    AddnewBtn() {
-      this.$router.push({
-        path: "/Index/commodityDataManagementAddNew",
-        query: {}
       });
     },
     //详情

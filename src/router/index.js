@@ -1,19 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../components/index.vue'
-import Grad from '../pageDetail/grad.vue'
-import Markey from '../pageDetail/markey.vue'
-// import Index from '@/components/Index'
-import StoreManageOut from '../pageDetail/StoreManageOut.vue'
-import StoreManageOutDetail from '../pageDetail/storeManageout/storeManageOutDetail.vue'
+
 import StoreManageIn from '../pageDetail/storeManageIn.vue'
 import PurchasingManage from '../pageDetail/purchasingManage.vue'
-import StoreManageInDetail from '../pageDetail/StoreManageIn/storeManagInDetail.vue'
 import PurchasingManageAddNew from '../pageDetail/purchasingManage/purchasingManageAddNew.vue'
 import PurchasingManageDetail from '../pageDetail/purchasingManage/purchasingManageDetail.vue'
-import orderManagement from '../pageDetail/orderManagement.vue'
-import orderManagementAddNew from '../pageDetail/orderManagement/orderManagementAddNew.vue'
-import orderManagementDetail from '../pageDetail/orderManagement/orderManagementDetail.vue'
 import supplier from '../pageDetail/supplier.vue'
 
 import goodsManage from '../pageDetail/goodsManage/goodsManage.vue'
@@ -30,6 +22,8 @@ import salesListAddNew from '../pageDetail/salesList/salesListAddNew.vue'
 import loading from '../components/loadIng.vue'
 import saleListMobile from '../pageDetail/salesList/saleListMobile.vue'
 import totalInventoryDetail from '../pageDetail/totalInventory/totalInventoryDetail.vue'
+import report from '../pageDetail/reportPage/report.vue'
+
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -46,32 +40,13 @@ export default new Router({
       path: '/Index',
       name: 'Index',
       component: Index,
-      children: [{
-        path: 'Grad',
-        name: '首页',
-        component: Grad,
-      }, {
-        path: 'Markey',
-        name: '第二页',
-        component: Markey
-      }, {
-        path: 'StoreManageOut',
-        name: '出库管理',
-        component: StoreManageOut
-      }, {
-        path: 'StoreManageOutDetail',
-        name: '出库详情',
-        component: StoreManageOutDetail
-      }, {
+      children: [
+       {
         path: 'StoreManageIn',
         name: '入库管理',
         component: StoreManageIn
       },
-      {
-        path: 'StoreManageInDetail',
-        name: '入库详情',
-        component: StoreManageInDetail
-      }, {
+     {
         path: 'PurchasingManage',
         name: '采购单',
         component: PurchasingManage
@@ -83,19 +58,7 @@ export default new Router({
         path: 'PurchasingManageDetail',
         name: '采购详情',
         component: PurchasingManageDetail
-      },  {
-        path: 'orderManagementAddNew',
-        name: '订单新增',
-        component: orderManagementAddNew
       }, {
-        path: 'orderManagementDetail',
-        name: '订单详情',
-        component: orderManagementDetail
-      }, {
-        path: 'orderManagement',
-        name: '订单管理',
-        component: orderManagement
-      },{
         path:'supplier',
         name:"厂商",
         component:supplier
@@ -147,7 +110,11 @@ export default new Router({
         path:'totalInventoryDetail',
         name:'库存详情',
         component:totalInventoryDetail
-      }
+      },{
+          path:'report',
+          name:'报表',
+          component:report
+        }
 
       ]
     }

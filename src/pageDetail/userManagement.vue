@@ -14,6 +14,11 @@
       <el-button class="addBtn" @click="AddnewBtn">增加大类</el-button>
       <el-button class="addBtn" @click="zhongAdd=true">增加中类</el-button>
       <el-button class="addBtn" @click="xiAdd=true">增加细类</el-button>
+
+      <el-button class="addBtn" @click="AddnewBtn">大类管理</el-button>
+      <el-button class="addBtn" @click="zhongAdd=true">增加中类管理</el-button>
+      <el-button class="addBtn" @click="xiAdd=true">细类管理</el-button>
+
     </el-row>
     <el-table :data="dataList" style="width: 100%" border>
       <el-table-column label="序号" type="index" width="80"></el-table-column>
@@ -127,7 +132,7 @@ export default {
       theQuery: {
         categoryName: "",
         pageNum: 1,
-        pageSize: 20
+        pageSize: 7
       },
       dialogVisibleDetail: false,
       dialogVisibleAdd: false,

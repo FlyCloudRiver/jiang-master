@@ -56,7 +56,7 @@ export default {
       pageNum: "",
       theQuery: {
         pageNum: 1,
-        pageSize: 20,
+        pageSize: 7,
         person: "",
         purchaseCode: "",
         purchaseDetailForms: [],

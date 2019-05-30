@@ -25,6 +25,8 @@
     <el-row>
       <el-button class="addBtn" @click="AddnewBtn">增加</el-button>
     </el-row>
+
+    <!--表格-->
     <el-table :data="dataList" style="width: 100%" border>
       <el-table-column label="序号" type="index" width="80"></el-table-column>
       <el-table-column label="操作" width="210">
@@ -70,7 +72,7 @@ export default {
       theQuery: {
         endTime: "",
         pageNum: 1,
-        pageSize: 20,
+        pageSize: 7,
         person: "",
         shipmentCode: "",
         shipmentDetailForms: [],
@@ -110,7 +112,7 @@ export default {
       axios.post(shipmentSelect, this.theQuery).then(data => {
         console.log(data);
         this.dataList = data.content;
-        
+
       });
     },
     //新增
@@ -122,7 +124,6 @@ export default {
     },
     //详情
     detailBtn(row) {
-      console.log("121");
       this.$router.push({
         path: "/Index/saleListDetail",
         query: { id: row }

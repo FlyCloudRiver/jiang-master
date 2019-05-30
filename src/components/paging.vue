@@ -1,11 +1,11 @@
 <template>
-  <div class="paging-layout" v-if="pageNum>20">
+  <div class="paging-layout" v-if="pageNum>7">
     <el-pagination
       class="page-input"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="theQuery.pageNo"
-      :page-sizes="[20,30, 50,100]"
+      :page-sizes="[7,10, 20,25]"
       :page-size="theQuery.pageSize"
       layout="sizes,total , prev, pager, next ,jumper"
       :total="pageNum-0||0"

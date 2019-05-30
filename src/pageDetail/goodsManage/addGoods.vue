@@ -25,9 +25,9 @@
         <el-form-item label="商品名称:" prop="goodsName">
           <el-input v-model="postData.goodsName"></el-input>
         </el-form-item>
-        <!--<el-form-item label="商品规格:" prop="goodsSpecification">
+        <el-form-item label="商品规格:" prop="goodsSpecification">
           <el-input v-model="postData.goodsSpecification"></el-input>
-        </el-form-item>-->
+        </el-form-item>
         <el-form-item label="计量单位:" prop="goodsUnit">
           <el-input v-model="postData.goodsUnit"></el-input>
         </el-form-item>
@@ -146,7 +146,6 @@ export default {
     if(this.$route.query.id){
       axios.post(goodsSelectById+'?id='+this.$route.query.id).then(
         data=>{
-          console.log(data,'12')
           this.postData=data;
         }
       )
@@ -203,7 +202,6 @@ export default {
     },
     //详情
     detailBtn() {
-      console.log("121");
       this.$router.push({
         path: "/Index/refundManageDetail",
         query: {}

@@ -81,7 +81,7 @@
     <!-- 确认出库单 -->
     <div class="choseBbox" v-show="active==1">
       <el-form label-position="right" label-width="100px" :inline="true">
-<!--   
+<!--
         <el-form-item label="销售单号：">
           <el-input v-model="postDate.shipmentCode"></el-input>
         </el-form-item> -->
@@ -148,7 +148,6 @@
             </div>
           </template>
         </el-table-column> -->
-        <el-table-column label="库存" prop="amount"></el-table-column>
         <el-table-column label="商品数量" prop="num">
           <template slot-scope="scope">
             <div>
@@ -156,13 +155,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="商品总价" prop="name">
-          <template slot-scope="scope">
-            <div>
-              <span>{{scope.row.num?scope.row.num*scope.row.goodsDTO.goodsPrice:''}}</span>
-            </div>
-          </template>
-        </el-table-column>
+        <el-table-column label="库存" prop="amount"></el-table-column>
       </el-table>
     </div>
     <div class="btnBox">
@@ -186,7 +179,7 @@ export default {
         person: this.$store.state.loading.user.name,
         shipmentCode: "",
         shipmentDetailForms: [
-         
+
         ],
         startTime: "",
         storage: false

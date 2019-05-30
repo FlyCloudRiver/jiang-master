@@ -72,7 +72,7 @@ export default {
         goodsName:null,
         goodsPrice: null,
         pageNum: 1,
-        pageSize: 20,
+        pageSize: 7,
         person:null,
         supplierId: null,
         supplierName:null
@@ -103,8 +103,8 @@ export default {
         this.$message.warning('删除成功')
         this.getList();
       })
-        
-      
+
+
 
     },
         //分页

@@ -35,7 +35,7 @@ export const userDelete='/user/delete'//删除
 export const purchaseIndert='/purchase/insert'//生成采购单
 export const purchaseSelect='/purchase/select'//采购单动态分页显示
 export const purchaseSelectDetail='/purchase/selectId'//获取采购单详情
-export const purchaseDelete='/purchase/delete'//删除 
+export const purchaseDelete='/purchase/delete'//删除
 export const purchaseUpdate='/purchase/update'//更新采购单
 //库存
 export const storeroomSelect='/storeroom/selectAll'//商品库存所有
@@ -55,3 +55,5 @@ export const userInfoLogin='/userInfo/login'//登陆
 export const provinceSelect='/province/select'//查找省份
 export const provinceCity = '/province/selectCity'//查找市
 export const provinceArea = '/province/selectArea'//查找区县
+//查看报表
+export const report = '/storeroom/selectReport'

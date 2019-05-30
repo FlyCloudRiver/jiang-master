@@ -63,7 +63,7 @@ export default {
         startTime:null,
         endTime:null,
         pageNum: 1,
-        pageSize: 20,
+        pageSize: 7,
         person: "",
         purchaseCode: "",
         purchaseDetailForms: [],

@@ -159,7 +159,7 @@ export default {
     },
     /*分页显示用户*/
     getList() {
-      axios.get(userSelect + "?pageNum=1&pageSize=20").then(data => {
+      axios.get(userSelect + "?pageNum=1&pageSize=7").then(data => {
         console.log(data);
         this.dataList = data.content;
       });
