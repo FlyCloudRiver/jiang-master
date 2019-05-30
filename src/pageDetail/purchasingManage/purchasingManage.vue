@@ -5,8 +5,11 @@
         <el-form-item label="订单编号:">
           <el-input v-model="theQuery.purchaseCode"></el-input>
         </el-form-item>
-        <el-form-item label="入库时间:">
-          <el-input></el-input>
+       <el-form-item label="开始时间:">
+          <el-date-picker v-model="theQuery.startTime" type="date" placeholder="选择日期"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="结束时间:">
+          <el-date-picker v-model="theQuery.endTime" type="date" placeholder="选择日期"></el-date-picker>
         </el-form-item>
         <el-form-item label="是否出库:">
           <el-select placeholder="请输入信息" clearable v-model="theQuery.storage">
@@ -19,23 +22,24 @@
         </el-form-item>
       </el-form>
     </div>
-    <!-- <el-row>
+    <el-row>
       <el-button class="addBtn" @click="AddnewBtn">增加</el-button>
-    </el-row> -->
+    </el-row>
     <el-table :data="dataList" style="width: 100%" border>
       <el-table-column label="序号" type="index" width="80"></el-table-column>
-      <el-table-column label="操作" width="180">
+      <el-table-column label="操作" width="200">
         <template slot-scope="scope">
           <div>
             <el-button type="text" @click="detailBtn(scope.row.id)">查看</el-button>
-
+            <el-button type="text" @click="updateBtn(scope.row.id)" v-if="!scope.row.storage">编辑</el-button>
+             <el-button type="text" @click="deleteBtn(scope.row)" v-if="!scope.row.storage">删除</el-button>
             <el-button type="text" @click="stoBtn(scope.row)" v-if="!scope.row.storage">入库</el-button>
           </div>
         </template>
       </el-table-column>
       <el-table-column label="操作人员" prop="person"></el-table-column>
       <el-table-column label="订单编号" prop="purchaseCode"></el-table-column>
-      <el-table-column label="入库时间" prop="storeTime"></el-table-column>
+      <el-table-column label="采购时间" prop="storeTime"></el-table-column>
       <el-table-column label="是否入库" prop="storage">
         <template slot-scope="scope">
           <div>
@@ -43,18 +47,21 @@
           </div>
         </template>
       </el-table-column>
+      <el-table-column label="创建时间" prop="createTime"></el-table-column>
     </el-table>
     <paging v-on:pageFlag="pageFlag" :pageNum="pageNum" :theQuery="theQuery"></paging>
   </div>
 </template>
 <script>
-import axios from "../api/axios.js";
-import { purchaseSelect, purchaseDelete,storeroomInsert } from "../api/address.js";
+import axios from "../../api/axios.js";
+import { purchaseSelect, purchaseDelete,storeroomInsert } from "../../api/address.js";
 export default {
   data() {
     return {
       pageNum: "",
       theQuery: {
+        startTime:null,
+        endTime:null,
         pageNum: 1,
         pageSize: 7,
         person: "",
@@ -71,6 +78,7 @@ export default {
   },
   methods: {
     //入库
+       //入库
     stoBtn(row){
         console.log(row)
         let data={
@@ -117,12 +125,6 @@ export default {
       this.$router.push({
         path: "/Index/purchasingManageUpdate",
         query: { id: row }
-      });
-    },
-    Btn() {
-      this.$router.push({
-        path: "/Index/Markey",
-        query: {}
       });
     }
   }

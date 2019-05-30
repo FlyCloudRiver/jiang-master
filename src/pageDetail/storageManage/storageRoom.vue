@@ -37,49 +37,49 @@
   </div>
 </template>
 <script>
-import axios from "../api/axios.js";
-import { storeroomSelect } from "../api/address.js";
-export default {
-  data() {
-    return {
-      theQuery: {
+  import axios from "../../api/axios.js";
+  import { storeroomSelect } from "../../api/address.js";
+  export default {
+    data() {
+      return {
+        theQuery: {
 
-        pageNum: 1,
-        pageSize: 7,
+          pageNum: 1,
+          pageSize: 7,
 
+        },
+        dataList: [
+        ]
+      };
+    },
+    created() {
+      this.getList();
+    },
+    methods: {
+      getList() {
+        axios.post(storeroomSelect+'?pageNum='+this.theQuery.pageNum+'&pageSize='+this.theQuery.pageSize).then(data => {
+          console.log(data);
+          this.dataList=data.content
+        });
       },
-      dataList: [
-      ]
-    };
-  },
-  created() {
-    this.getList();
-  },
-  methods: {
-    getList() {
-      axios.post(storeroomSelect+'?pageNum='+this.theQuery.pageNum+'&pageSize='+this.theQuery.pageSize).then(data => {
-        console.log(data);
-        this.dataList=data.content
-      });
-    },
-    //详情
-    detailBtn(row) {
-      this.$router.push({
-        path: "/Index/totalInventoryDetail",
-        query: {id:row}
-      });
-    },
-    Btn() {
-      this.$router.push({
-        path: "/Index/Markey",
-        query: {}
-      });
+      //详情
+      detailBtn(row) {
+        this.$router.push({
+          path: "/Index/storageRoomDetail",
+          query: {id:row}
+        });
+      },
+      Btn() {
+        this.$router.push({
+          path: "/Index/Markey",
+          query: {}
+        });
+      }
     }
-  }
-};
+  };
 </script>
 <style lang="less">
-.addBtn {
-  margin: 10px 0px;
-}
+  .addBtn {
+    margin: 10px 0px;
+  }
 </style>

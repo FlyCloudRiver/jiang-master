@@ -107,7 +107,7 @@
   </div>
 </template>
 <script>
-import axios from "../api/axios.js";
+import axios from "../../api/axios.js";
 import {
   supplierINsert,
   supplierSelect,
@@ -116,8 +116,8 @@ import {
    provinceSelect,
   provinceCity,
   provinceArea,
-} from "../api/address.js";
-import paging from '../components/paging.vue'
+} from "../../api/address.js";
+import paging from '../../components/paging.vue'
 export default {
   components:{
     paging
@@ -161,7 +161,7 @@ export default {
         ],
         /*supplierWeb: [{ required: true, message: "请输入", trigger: "blur" }],*/
         prohibit: [{ required: true, message: "请输入", trigger: "blur" }],
-       /* supplierPhone: [{ required: true, message: "请输入", trigger: "blur" }],*/
+        supplierPhone: [{ required: true, message: "请输入", trigger: "blur" }],
         supplierName: [{ required: true, message: "请输入", trigger: "blur" }]
       }
     };

@@ -23,7 +23,7 @@
         </el-row> -->
       </el-form>
     </div>
-  <el-row>
+    <el-row>
       <span>商品出入库记录</span>
     </el-row>
     <el-table :data="detailData" style="width: 100%" border>
@@ -51,37 +51,37 @@
 
       <el-table-column label="出入库时间" prop="updateTime"></el-table-column>
 
-        <el-table-column label="商品进价" prop="goodsPrice">
-             <template slot-scope='scope'>
-                    <div>
-                        {{scope.row.goods?scope.row.goods.goodsPrice:''}}
-                    </div>
-                </template>
-        </el-table-column>
-
-
-     <!-- <el-table-column label="商品进价" prop="goodsPrice">
+      <el-table-column label="商品进价" prop="goodsPrice">
         <template slot-scope='scope'>
           <div>
             {{scope.row.goods?scope.row.goods.goodsPrice:''}}
           </div>
         </template>
-      </el-table-column>-->
-        <!--<el-table-column label="商品单位" prop="goodsUnit">
-             <template slot-scope='scope'>
-                    <div>
-                        {{scope.row.goods?scope.row.goods.goodsUnit:''}}
-                    </div>
-                </template>
-        </el-table-column>-->
+      </el-table-column>
 
-       <!-- <el-table-column label="商品规格型号" prop="goodsSpecification">
-             <template slot-scope='scope'>
-                    <div>
-                        {{scope.row.goods?scope.row.goods.goodsSpecification:''}}
-                    </div>
-                </template>
-        </el-table-column>-->
+
+      <!-- <el-table-column label="商品进价" prop="goodsPrice">
+         <template slot-scope='scope'>
+           <div>
+             {{scope.row.goods?scope.row.goods.goodsPrice:''}}
+           </div>
+         </template>
+       </el-table-column>-->
+      <!--<el-table-column label="商品单位" prop="goodsUnit">
+           <template slot-scope='scope'>
+                  <div>
+                      {{scope.row.goods?scope.row.goods.goodsUnit:''}}
+                  </div>
+              </template>
+      </el-table-column>-->
+
+      <!-- <el-table-column label="商品规格型号" prop="goodsSpecification">
+            <template slot-scope='scope'>
+                   <div>
+                       {{scope.row.goods?scope.row.goods.goodsSpecification:''}}
+                   </div>
+               </template>
+       </el-table-column>-->
     </el-table>
     <div class="btnBox">
       <el-button @click='$router.go(-1)'>返回</el-button>
@@ -89,36 +89,36 @@
   </div>
 </template>
 <script>
-import axios from '../../api/axios.js'
-import {storeroomSelectInfo} from '../../api/address.js'
-export default {
-  data() {
-    return {
+  import axios from '../../api/axios.js'
+  import {storeroomSelectInfo} from '../../api/address.js'
+  export default {
+    data() {
+      return {
 
-      detailData:''
-    };
-  },
-  created(){
+        detailData:''
+      };
+    },
+    created(){
       this.getDetail();
-  },
-  methods: {
+    },
+    methods: {
       getDetail(){
-          axios.post(storeroomSelectInfo+'?goodsId='+this.$route.query.id).then(data=>{
-              console.log(data)
-              this.detailData=data;
-          })
+        axios.post(storeroomSelectInfo+'?goodsId='+this.$route.query.id).then(data=>{
+          console.log(data)
+          this.detailData=data;
+        })
       },
-    Btn() {
-      this.$router.push({
-        path: "/Index/totalInventory",
-        query: {}
-      });
+      Btn() {
+        this.$router.push({
+          path: "/Index/totalInventory",
+          query: {}
+        });
+      }
     }
-  }
-};
+  };
 </script>
 <style lang="less">
-.addBtn {
-  margin: 10px 0px;
-}
+  .addBtn {
+    margin: 10px 0px;
+  }
 </style>

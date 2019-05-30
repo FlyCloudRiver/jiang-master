@@ -81,10 +81,10 @@
     <!-- 确认出库单 -->
     <div class="choseBbox" v-show="active==1">
       <el-form label-position="right" label-width="100px" :inline="true">
-<!--
-        <el-form-item label="销售单号：">
-          <el-input v-model="postDate.shipmentCode"></el-input>
-        </el-form-item> -->
+        <!--
+                <el-form-item label="销售单号：">
+                  <el-input v-model="postDate.shipmentCode"></el-input>
+                </el-form-item> -->
         <!-- <el-form-item label="销售方式：">
           <el-input v-model="postDate.salesSlipMethod"></el-input>
         </el-form-item>
@@ -167,93 +167,93 @@
   </div>
 </template>
 <script>
-import axios from "../../api/axios.js";
-import { storeroomSelect, shipmentInsert } from "../../api/address.js";
-export default {
-  data() {
-    return {
-      postDate: {
-        endTime: "",
-        pageNum: 0,
-        pageSize: 0,
-        person: this.$store.state.loading.user.name,
-        shipmentCode: "",
-        shipmentDetailForms: [
+  import axios from "../../api/axios.js";
+  import { storeroomSelect, shipmentInsert } from "../../api/address.js";
+  export default {
+    data() {
+      return {
+        postDate: {
+          endTime: "",
+          pageNum: 0,
+          pageSize: 0,
+          person: this.$store.state.loading.user.name,
+          shipmentCode: "",
+          shipmentDetailForms: [
 
-        ],
-        startTime: "",
-        storage: false
-      },
-      theQuery: {
-        goodsName: ""
-      },
-      active: 0,
-      dataList: [],
-      theSelection: []
-    };
-  },
-  created() {
-    this.getList();
-  },
-  methods: {
-    getList() {
-      let body = {
-        pageNum: 1,
-        pageSize: 200000
+          ],
+          startTime: "",
+          storage: false
+        },
+        theQuery: {
+          goodsName: ""
+        },
+        active: 0,
+        dataList: [],
+        theSelection: []
       };
-
-      axios.post(storeroomSelect+'?pageSize=200000&pageNum=1').then(data => {
-        console.log(data);
-        this.dataList = data.content;
-      });
     },
-    postBtn() {
-      // this.$router.go(-1);
-
-      this.theSelection.map((v, k) => {
-        let obj = {
-          goodsId: v.goodsDTO.id,
-          goodsNumber: v.num - 0
+    created() {
+      this.getList();
+    },
+    methods: {
+      getList() {
+        let body = {
+          pageNum: 1,
+          pageSize: 200000
         };
-        this.postDate.shipmentDetailForms.push(obj);
-      });
-      let data = this.postDate;
-      axios.post(shipmentInsert, data).then(data => {
-        console.log(data);
-        this.$message.success("添加成功");
+
+        axios.post(storeroomSelect+'?pageSize=200000&pageNum=1').then(data => {
+          console.log(data);
+          this.dataList = data.content;
+        });
+      },
+      postBtn() {
+        // this.$router.go(-1);
+
+        this.theSelection.map((v, k) => {
+          let obj = {
+            goodsId: v.goodsDTO.id,
+            goodsNumber: v.num - 0
+          };
+          this.postDate.shipmentDetailForms.push(obj);
+        });
+        let data = this.postDate;
+        axios.post(shipmentInsert, data).then(data => {
+          console.log(data);
+          this.$message.success("添加成功");
+          this.$router.go(-1);
+        });
+      },
+      deleteBtn() {},
+      backBtn() {
         this.$router.go(-1);
-      });
-    },
-    deleteBtn() {},
-    backBtn() {
-      this.$router.go(-1);
-    },
-    prveBtn() {
-      this.active--;
-    },
-    nextBtn() {
-      this.active++;
-    },
-    //选中商品时
-    selection(list) {
-      this.theSelection = list;
+      },
+      prveBtn() {
+        this.active--;
+      },
+      nextBtn() {
+        this.active++;
+      },
+      //选中商品时
+      selection(list) {
+        this.theSelection = list;
+      }
     }
-  }
-};
+  };
 </script>
 <style lang="less" scoped>
-.setpboslit {
-  width: 500px;
-  margin: 0 auto;
-}
-.btnBox {
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-}
-.spanBox {
-  width: 210px;
-  display: block;
-}
+  .setpboslit {
+    width: 500px;
+    margin: 0 auto;
+  }
+  .btnBox {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .spanBox {
+    width: 210px;
+    display: block;
+  }
 </style>
 

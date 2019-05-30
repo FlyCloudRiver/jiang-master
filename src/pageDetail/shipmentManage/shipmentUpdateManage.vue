@@ -3,7 +3,7 @@
     <div>
       <el-form label-position="right" label-width="120px" :inline="true">
         <el-row>
-            <el-col :span="8">
+          <el-col :span="8">
             <el-form-item label="操作人员：">
               <span>{{detailData.person}}</span>
             </el-form-item>
@@ -15,7 +15,7 @@
           </el-col>
           <el-col :span="8">
             <el-form-item label="入库时间：">
-             <span>{{detailData.storeTime}}</span>
+              <span>{{detailData.storeTime}}</span>
             </el-form-item>
           </el-col>
 
@@ -34,7 +34,7 @@
               <span>{{detailData.storeTime}}</span>
             </el-form-item>
           </el-col> -->
-         
+
         </el-row>
       </el-form>
     </div>
@@ -65,7 +65,7 @@
           </div>
         </template>
       </el-table-column>
-     
+
       <el-table-column label="商品单价" prop="goodsPrice">
         <template slot-scope="scope">
           <div>
@@ -80,7 +80,7 @@
           </div>
         </template>
       </el-table-column>
-     
+
       <el-table-column label="库存" prop="storageNum"></el-table-column>
       <el-table-column label="商品数量" prop="num">
         <template slot-scope="scope">
@@ -104,83 +104,83 @@
   </div>
 </template>
 <script>
-import axios from "../../api/axios.js";
-import {
-  shipmentSelectDetail,
-  shipmentUpdate,
-  roomList
-} from "../../api/address.js";
-export default {
-  data() {
-    return {
-      dataList: [],
-      detailData: {}
-    };
-  },
-  created() {
-    this.getDetail();
-    // this.getcategoryList();
-    // this.getsupplierList();
-  },
-  methods: {
-       getsupplierList() {
-         let bosy = {
-        pageNum: 1,
-        pageSize: 200000,
-        supplierAddress: "",
-        supplierCode: "",
-        supplierName: "",
-        supplierPhone: "",
-        supplierWeb: ""
-      }
-      axios.post(supplierSelect, body).then(data => {
-        console.log(data);
-        this.supplierList == data.content;
-      });
+  import axios from "../../api/axios.js";
+  import {
+    shipmentSelectDetail,
+    shipmentUpdate,
+    roomList
+  } from "../../api/address.js";
+  export default {
+    data() {
+      return {
+        dataList: [],
+        detailData: {}
+      };
     },
+    created() {
+      this.getDetail();
+      // this.getcategoryList();
+      // this.getsupplierList();
+    },
+    methods: {
+      getsupplierList() {
+        let bosy = {
+          pageNum: 1,
+          pageSize: 200000,
+          supplierAddress: "",
+          supplierCode: "",
+          supplierName: "",
+          supplierPhone: "",
+          supplierWeb: ""
+        }
+        axios.post(supplierSelect, body).then(data => {
+          console.log(data);
+          this.supplierList == data.content;
+        });
+      },
       getcategoryList(){
-      axios.get(categoryList).then(data=>{
-        console.log(data);
-        this.categoryList=data;
-      })},
+        axios.get(categoryList).then(data=>{
+          console.log(data);
+          this.categoryList=data;
+        })},
 
-    getDetail() {
-      axios
-        .post(shipmentSelectDetail + "?id=" + this.$route.query.id)
-        .then(data => {
-          console.log(data, "销售单详情");
-          this.detailData = data;
-          this.dataList = data.shipmentDetailDTOS;
-          this.dataList.map((v, k) => {
-            let bb = {
-              pageNum: 1,
-              pageSize: 20,
-              goodsName: v.goodsDTO.goodsName
-            };
-            axios.post(roomList, bb).then(data => {
-              v.storageNum = data.content[0].amount;
+      getDetail() {
+        axios
+          .post(shipmentSelectDetail + "?id=" + this.$route.query.id)
+          .then(data => {
+            console.log(data, "销售单详情");
+            this.detailData = data;
+            this.dataList = data.shipmentDetailDTOS;
+            this.dataList.map((v, k) => {
+              let bb = {
+                pageNum: 1,
+                pageSize: 20,
+                goodsName: v.goodsDTO.goodsName
+              };
+              axios.post(roomList, bb).then(data => {
+                v.storageNum = data.content[0].amount;
+              });
             });
           });
+      },
+      postBtn() {
+        let body = this.detailData;
+        body.shipmentDetailDTOS = this.dataList;
+        axios.put(shipmentUpdate, body).then(data => {
+          this.$message.success("修改成功");
+          this.$router.go(-1);
         });
-    },
-    postBtn() {
-      let body = this.detailData;
-      body.shipmentDetailDTOS = this.dataList;
-      axios.put(shipmentUpdate, body).then(data => {
-        this.$message.success("修改成功");
-        this.$router.go(-1);
-      });
+      }
     }
-  }
-};
+  };
 </script>
 <style lang="less">
-.addBtn {
-  margin: 10px 0px;
-}
-.btnBox {
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-}
+  .addBtn {
+    margin: 10px 0px;
+  }
+  .btnBox {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
 </style>

@@ -2,26 +2,34 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../components/index.vue'
 
-import StoreManageIn from '../pageDetail/storeManageIn.vue'
-import PurchasingManage from '../pageDetail/purchasingManage.vue'
+import welcome from '../components/welcome.vue'
+
+//采购管理
+import purchasingManage from '../pageDetail/purchasingManage/purchasingManage.vue'
 import PurchasingManageAddNew from '../pageDetail/purchasingManage/purchasingManageAddNew.vue'
 import PurchasingManageDetail from '../pageDetail/purchasingManage/purchasingManageDetail.vue'
-import supplier from '../pageDetail/supplier.vue'
-
+//厂商管理
+import supplierManage from '../pageDetail/supplierManage/supplierManage'
+//商品管理
 import goodsManage from '../pageDetail/goodsManage/goodsManage.vue'
 import addGoods from '../pageDetail/goodsManage/addGoods.vue'
-
-import totalInventory from '../pageDetail/totalInventory.vue'
+//库存管理
+import storageRoom from '../pageDetail/storageManage/storageRoom.vue'
+import storageRoomDetail from '../pageDetail/storageManage/storageRoomDetail.vue'
+//分类管理
 import categoriesManage from '../pageDetail/categoriesManage/categories.vue'
-import userManagement1 from '../pageDetail/userManagement.1.vue'
+//用户管理
+import userManage from '../pageDetail/userManage/userManage.vue'
 import purchasingManageUpdate from '../pageDetail/purchasingManage/purchasingManageUpdate.vue'
-import purchasingManage1 from '../pageDetail/purchasingManage.1.vue'
-import SalesList from '../pageDetail/SalesList.vue'
-import saleListDetail from '../pageDetail/salesList/saleListDetail.vue'
-import salesListAddNew from '../pageDetail/salesList/salesListAddNew.vue'
+
+//销售管理
+import shipmentManage from '../pageDetail/shipmentManage/shipmentManage.vue'
+import shipmentDetail from '../pageDetail/shipmentManage/shipmentDetail.vue'
+import shipmentAddManage from '../pageDetail/shipmentManage/shipmentAddManage.vue'
+import shipmentUpdateManage from '../pageDetail/shipmentManage/shipmentUpdateManage.vue'
+//登录
 import loading from '../components/loadIng.vue'
-import saleListMobile from '../pageDetail/salesList/saleListMobile.vue'
-import totalInventoryDetail from '../pageDetail/totalInventory/totalInventoryDetail.vue'
+//报表
 import report from '../pageDetail/reportPage/report.vue'
 
 Vue.use(Router)
@@ -41,15 +49,10 @@ export default new Router({
       name: 'Index',
       component: Index,
       children: [
-       {
-        path: 'StoreManageIn',
-        name: '入库管理',
-        component: StoreManageIn
-      },
      {
-        path: 'PurchasingManage',
+        path: 'purchasingManage',
         name: '采购单',
-        component: PurchasingManage
+        component: purchasingManage
       }, {
         path: 'PurchasingManageAddNew',
         name: '采购新增',
@@ -59,9 +62,9 @@ export default new Router({
         name: '采购详情',
         component: PurchasingManageDetail
       }, {
-        path:'supplier',
-        name:"厂商",
-        component:supplier
+        path:'supplierManage',
+        name:"厂商管理",
+        component:supplierManage
       },{
         path:'goodsManage',
         name:'商品资料管理',
@@ -71,49 +74,50 @@ export default new Router({
         name:'新增商品',
         component:addGoods
       },{
-        path:'totalInventory',
+        path:'storageRoom',
         name:'总库存',
-        component:totalInventory
+        component:storageRoom
       },{
         path:'categoriesManage',
         name:'分类管理',
         component:categoriesManage
       },{
-        path:'userManagement1',
+        path:'userManage',
         name:'用户管理',
-        component:userManagement1
+        component:userManage
       },{
         path:'purchasingManageUpdate',
         name:"采购更新",
         component:purchasingManageUpdate
       },{
-        path:'purchasingManage1',
-        name:'采购管理',
-        component:purchasingManage1
-      },{
-        path:'SalesList',
+        path:'shipmentManage',
         name:'销售单',
-        component:SalesList
+        component:shipmentManage
       },{
-        path:'saleListDetail',
+        path:'shipmentDetail',
         name:'销售单详情',
-        component:saleListDetail
+        component:shipmentDetail
       },{
-        path:'salesListAddNew',
+        path:'shipmentAddManage',
         name:'销售单新增',
-        component:salesListAddNew
+        component:shipmentAddManage
       },{
-        path:'saleListMobile',
+        path:'shipmentUpdateManage',
         name:'销售单修改',
-        component:saleListMobile
+        component:shipmentUpdateManage
       },{
-        path:'totalInventoryDetail',
+        path:'storageRoomDetail',
         name:'库存详情',
-        component:totalInventoryDetail
+        component:storageRoomDetail
       },{
           path:'report',
           name:'报表',
           component:report
+        },
+        {
+          path:'welcome',
+          name:'欢迎界面',
+          component:welcome
         }
 
       ]
