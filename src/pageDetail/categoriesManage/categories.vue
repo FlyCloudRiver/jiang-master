@@ -15,9 +15,9 @@
       <el-button class="addBtn" @click="zhongAdd=true">增加中类</el-button>
       <el-button class="addBtn" @click="xiAdd=true">增加细类</el-button>
 
-      <el-button class="addBtn" @click="AddnewBtn">大类管理</el-button>
-      <el-button class="addBtn" @click="zhongAdd=true">增加中类管理</el-button>
-      <el-button class="addBtn" @click="xiAdd=true">细类管理</el-button>
+      <el-button class="addBtn" @click="bigManage">大类管理</el-button>
+      <el-button class="addBtn" @click="secondaryManage=true">增加中类管理</el-button>
+      <el-button class="addBtn" @click="categoryManage=true">细类管理</el-button>
 
     </el-row>
     <el-table :data="dataList" style="width: 100%" border>
