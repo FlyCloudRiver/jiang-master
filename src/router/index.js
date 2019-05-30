@@ -12,7 +12,7 @@ import goodsManage from '../pageDetail/goodsManage/goodsManage.vue'
 import addGoods from '../pageDetail/goodsManage/addGoods.vue'
 
 import totalInventory from '../pageDetail/totalInventory.vue'
-import UserManagement from '../pageDetail/userManagement.vue'
+import categoriesManage from '../pageDetail/categoriesManage/categories.vue'
 import userManagement1 from '../pageDetail/userManagement.1.vue'
 import purchasingManageUpdate from '../pageDetail/purchasingManage/purchasingManageUpdate.vue'
 import purchasingManage1 from '../pageDetail/purchasingManage.1.vue'
@@ -75,9 +75,9 @@ export default new Router({
         name:'总库存',
         component:totalInventory
       },{
-        path:'UserManagement',
+        path:'categoriesManage',
         name:'分类管理',
-        component:UserManagement
+        component:categoriesManage
       },{
         path:'userManagement1',
         name:'用户管理',

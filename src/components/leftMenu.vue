@@ -8,7 +8,7 @@
           </template>
           <el-menu-item index="/Index/supplier">厂商管理</el-menu-item>
           <el-menu-item index="/Index/goodsManage">商品管理</el-menu-item>
-          <el-menu-item index="/Index/UserManagement">分类管理</el-menu-item>
+          <el-menu-item index="/Index/categoriesManage">分类管理</el-menu-item>
         </el-submenu>
          <el-submenu index="2">
           <template slot="title">

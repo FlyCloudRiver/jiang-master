@@ -108,7 +108,7 @@
   </div>
 </template>
 <script>
-import axios from "../api/axios.js";
+import axios from "../../api/axios.js";
 import {
   categorySelectAll,
   bigCategoryInsert,
@@ -119,8 +119,8 @@ import {
   categoryDelete,
   secondaryCategoryDelete,
   bigCategoryDelete
-} from "../api/address.js";
-import paging from "../components/paging.vue";
+} from "../../api/address.js";
+import paging from "../../components/paging.vue";
 
 export default {
   components: {
