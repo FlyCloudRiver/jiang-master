@@ -132,8 +132,8 @@
           </div>
         </template>
       </el-table-column> -->
-      <el-table-column label="库存" prop="storageNum"></el-table-column>
-      <el-table-column label="采购数量" prop="goodsNumber">
+      <!--<el-table-column label="库存" prop="storageNum"></el-table-column>-->
+      <el-table-column label="销售数量" prop="goodsNumber">
       </el-table-column>
       <el-table-column label="商品总价" prop="name">
         <template slot-scope="scope">

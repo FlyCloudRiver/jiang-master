@@ -9,7 +9,7 @@
           <el-input v-model="theQuery.categoryName"></el-input>
         </el-form-item>
         <el-form-item label="商品名">
-          <el-input v-model="theQuery.categoryName"></el-input>
+          <el-input v-model="theQuery.goodsName"></el-input>
         </el-form-item>
         <el-form-item label="厂商名">
           <el-input v-model="theQuery.supplierName"></el-input>
@@ -41,7 +41,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="商品规格" prop="goodsSpecification"></el-table-column>
+      <!--<el-table-column label="商品规格" prop="goodsSpecification"></el-table-column>-->
       <el-table-column label="商品名" prop="goodsName"></el-table-column>
       <el-table-column label="计量单位" prop="goodsUnit"></el-table-column>
       <el-table-column label="进价" prop="goodsPrice"></el-table-column>

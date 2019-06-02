@@ -37,7 +37,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="操作人员" prop="person"></el-table-column>
+
       <el-table-column label="订单编号" prop="purchaseCode"></el-table-column>
       <el-table-column label="采购时间" prop="storeTime"></el-table-column>
       <el-table-column label="是否入库" prop="storage">
@@ -47,7 +47,9 @@
           </div>
         </template>
       </el-table-column>
+
       <el-table-column label="创建时间" prop="createTime"></el-table-column>
+      <el-table-column label="操作人员" prop="person"></el-table-column>
     </el-table>
     <paging v-on:pageFlag="pageFlag" :pageNum="pageNum" :theQuery="theQuery"></paging>
   </div>

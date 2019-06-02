@@ -161,7 +161,7 @@ export default {
         ],
         /*supplierWeb: [{ required: true, message: "请输入", trigger: "blur" }],*/
         prohibit: [{ required: true, message: "请输入", trigger: "blur" }],
-        supplierPhone: [{ required: true, message: "请输入", trigger: "blur" }],
+      /*  supplierPhone: [{ required: true, message: "请输入", trigger: "blur" }],*/
         supplierName: [{ required: true, message: "请输入", trigger: "blur" }]
       }
     };

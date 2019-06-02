@@ -67,7 +67,7 @@ export default new Router({
         component:supplierManage
       },{
         path:'goodsManage',
-        name:'商品资料管理',
+        name:'商品管理',
         component:goodsManage
       },{
         path:'addGoods',
@@ -91,7 +91,7 @@ export default new Router({
         component:purchasingManageUpdate
       },{
         path:'shipmentManage',
-        name:'销售单',
+        name:'销售单管理',
         component:shipmentManage
       },{
         path:'shipmentDetail',
@@ -99,11 +99,11 @@ export default new Router({
         component:shipmentDetail
       },{
         path:'shipmentAddManage',
-        name:'销售单新增',
+        name:'新增销售单',
         component:shipmentAddManage
       },{
         path:'shipmentUpdateManage',
-        name:'销售单修改',
+        name:'修改销售单',
         component:shipmentUpdateManage
       },{
         path:'storageRoomDetail',

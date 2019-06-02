@@ -39,10 +39,12 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="操作人员" prop="person"></el-table-column>
       <el-table-column label="销售单号" prop="shipmentCode"></el-table-column>
+
       <el-table-column label="销售时间" prop="storeTime"></el-table-column>
       <!-- <el-table-column label="类型" prop="saleType"></el-table-column> -->
+
+
       <el-table-column label="是否出库" prop="name">
         <template slot-scope="scope">
           <div>
@@ -50,16 +52,11 @@
           </div>
         </template>
       </el-table-column>
-      <!-- <el-table-column label="订单仓库" prop="name">
-        <template slot-scope="scope">
-          <div>
-            <span>{{scope.row.storageRoomDTO?scope.row.storageRoomDTO.storageRoomName:''}}</span>
-          </div>
-        </template>
-      </el-table-column>-->
+
+
       <el-table-column label="创建时间" prop="createTime"></el-table-column>
-      <!-- <el-table-column label="供货方式" prop="salesSlipMethod"></el-table-column>
-      <el-table-column label="预计到货时间" prop="arrivalTime"></el-table-column>-->
+      <el-table-column label="操作人员" prop="person"></el-table-column>
+
     </el-table>
   </div>
 </template>

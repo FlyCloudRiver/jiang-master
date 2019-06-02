@@ -37,7 +37,7 @@ export default {
        if(data){
          sessionStorage.setItem("user", JSON.stringify(data))
           this.$router.push({
-        path: "/Index/welcome",
+        path: "/Index/goodsManage",
         query: {}
           });
        }
@@ -56,7 +56,7 @@ export default {
   align-items: Center;
   width: 100%;
   height: 100%;
- background:url(../assets/login.jpg) no-repeat;
+ background:url(../assets/2.jpg) no-repeat;
 .loadingBox {
   display: flex;
   justify-content: center;
@@ -64,16 +64,18 @@ export default {
 
   .el-button{
     width: 400px;
-    font-size: 20px;
+    font-size: 23px;
   }
-  .el-input{
+ /deep/ .el-input{
     width: 400px;
-    font-size: 30px;
+    font-size: 20px;
+    height: 50px!important;
+  /deep/ .el-input__inner {
+     height: 50px;
+   }
   }
 
-  .el-input__inner {
-    height: 45px;
-  }
+
 
   /deep/.el-form-item{
     display: block;

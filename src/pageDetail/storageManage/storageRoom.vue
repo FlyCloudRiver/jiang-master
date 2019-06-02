@@ -68,13 +68,8 @@
           path: "/Index/storageRoomDetail",
           query: {id:row}
         });
-      },
-      Btn() {
-        this.$router.push({
-          path: "/Index/Markey",
-          query: {}
-        });
       }
+
     }
   };
 </script>

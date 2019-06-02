@@ -1,10 +1,13 @@
 <template>
   <div class="all">
-    <el-menu router unique-opened>
+    <el-menu
+      router
+      unique-opened
+    >
       <el-menu-item-group>
         <el-submenu index="1">
           <template slot="title">
-            <span>基础资料管理</span>
+            <span>基础信息管理</span>
           </template>
           <el-menu-item index="/Index/supplierManage">厂商管理</el-menu-item>
           <el-menu-item index="/Index/goodsManage">商品管理</el-menu-item>
@@ -16,18 +19,20 @@
           </template>
           <el-menu-item index="/Index/userManage">用户管理</el-menu-item>
         </el-submenu>
+
         <el-submenu index="3">
-          <template slot="title">
-            <span>库存管理</span>
-          </template>
-          <el-menu-item index="/Index/storageRoom">查看库存</el-menu-item>
-        </el-submenu>
-        <el-submenu index="4">
           <template slot="title">
             <span>订单管理</span>
           </template>
           <el-menu-item index="/Index/purchasingManage">采购单</el-menu-item>
           <el-menu-item index="/Index/shipmentManage">销售单</el-menu-item>
+        </el-submenu>
+
+        <el-submenu index="4">
+          <template slot="title">
+            <span>库存管理</span>
+          </template>
+          <el-menu-item index="/Index/storageRoom">查看库存</el-menu-item>
         </el-submenu>
 
         <el-submenu index="5">
