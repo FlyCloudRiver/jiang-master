@@ -14,15 +14,18 @@ export const goodsDelete='/goods/delete'//删除
 export const goodsUpdate='/goods/update'//修改
 export const goodsSelectById='/goods/selectById'//查询ById
 //分类
-export const categorySelectAll='/category/select'//动态查询
+export const bigCategorySelectAll='/bigCategory/selectAll'//查询类list
+export const selectBigCategoryById='/bigCategory/selectOne'
+export const insertAll='/allCategory/insert'
 export const bigCategoryInsert='/bigCategory/insert'//添加大类
-export const bigCategorySelectAll='/bigCategory/selectAll'//查询大类list
-export const secondaryCategoryInsert='/secondaryCategory/insert' //添加中类
-export const secondaryCategorySelectAll='/secondaryCategory/selectAll'//查询中类
-export const categoryInsert='/category/insert'//添加细类
-export const categoryDelete='/category/delete'//删除细类
-export const secondaryCategoryDelete='/secondaryCategory/delete'//删除中类
+export const bigCategoryUpdate='/bigCategory/update'//修改大类
 export const bigCategoryDelete='/bigCategory/delete'//删除大类
+export const secondaryCategoryDelete='/secondaryCategory/delete'//删除中类
+export const categoryDelete='/category/delete'//删除细类
+export const categoryInsert='/category/insert'//添加细类
+export const categoryAndCategoryInsert='/allCategory/update'//更新中类和细类
+
+
 export const categoryList='/category/selectAll'//查询细类所有
 export const secondaryCategoryUpdate='/secondaryCategory/update'//修改中类
 export const category='/category/selectAll'//查询

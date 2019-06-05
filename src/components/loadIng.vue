@@ -1,15 +1,15 @@
 <template>
   <div class="all">
     <div class="loadingBox">
-        <el-form label-position="right" label-width="0px" :inline="true">
-            <el-form-item label="">
+        <el-form label-position="right" label-width="0px" :inline="true" :model="loadData" :rules="rules" ref="loadData">
+            <el-form-item label="" prop="username">
               <el-input placeholder="请输入用户名" v-model="loadData.username" ></el-input>
             </el-form-item>
-            <el-form-item label="">
+            <el-form-item label="" prop="password">
               <el-input placeholder="请输入密码" v-model="loadData.password" type="password"></el-input>
             </el-form-item>
           <el-form-item label="">
-            <el-button @click="loading">登陆</el-button>
+            <el-button @click="loading('loadData')">登陆</el-button>
           </el-form-item>
          </el-form>
     </div>
@@ -24,6 +24,10 @@ export default {
       loadData:{
         password:'',
         username:''
+      },
+      rules: {
+        username: [{ required: true, message: "请输入用户名 ", trigger: "blur" }],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
       }
     };
   },
@@ -31,18 +35,23 @@ export default {
     console.log(this)
   },
   methods: {
-    loading() {
-     axios.post(userInfoLogin+'?password='+this.loadData.password+'&username='+this.loadData.username).then(data=>{
-       console.log(data)
-       if(data){
-         sessionStorage.setItem("user", JSON.stringify(data))
-          this.$router.push({
-        path: "/Index/goodsManage",
-        query: {}
-          });
-       }
-       console.log(this.$store.state.loading.user)
-     })
+    loading(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          axios.post(userInfoLogin+'?password='+this.loadData.password+'&username='+this.loadData.username).then(data=>{
+            console.log(data)
+            if(data){
+              sessionStorage.setItem("user", JSON.stringify(data))
+              this.$router.push({
+                path: "/Index/goodsManage",
+                query: {}
+              });
+            }
+
+          })
+        }
+      })
+
 
 
     }

@@ -12,15 +12,12 @@
         <!-- <el-form-item label="商品编号:" prop="goodsCode">
           <el-input v-model="postData.goodsCode"></el-input>
         </el-form-item> -->
-        <el-form-item label="商品细类:" prop="categoryId">
-          <el-select placeholder="请选择" clearable v-model="postData.categoryId">
-            <el-option
-              v-for="(item,index) in categoryList"
-              :key="index"
-              :label="item.categoryName"
-              :value="item.id"
-            ></el-option>
-          </el-select>
+        <el-form-item label="商品细类:">
+            <el-cascader
+              :options="categoryList"
+              v-model="categoryId"
+              :props="props"
+            ></el-cascader>
         </el-form-item>
         <el-form-item label="商品名称:" prop="goodsName">
           <el-input v-model="postData.goodsName"></el-input>
@@ -58,17 +55,18 @@
 </template>
 <script>
 import axios from "../../api/axios.js";
-import { goodsInsert,categoryList,goodsSelectById,goodsUpdate,supplierSelectAll,category } from "../../api/address.js";
+import { goodsInsert,bigCategorySelectAll,goodsSelectById,goodsUpdate,supplierSelectAll,category } from "../../api/address.js";
 export default {
   data() {
     return {
+      categoryId:null,
       categoryList:[],
       supplierList:[],
       options: [],
       category: null,
       props: {
-        label: "categoryName",
-        value: "id",
+        label: "name",
+        value:'id',
         children: "children"
       },
       postData: {
@@ -109,14 +107,7 @@ export default {
           { required: true, message: "请输入", trigger: "blur" }
         ],
       },
-      channel: [
-        {
-          value: "直送"
-        },
-        {
-          value: "配送"
-        }
-      ],
+
       categories: [
         {
           value: "A类",
@@ -142,25 +133,17 @@ export default {
   created(){
     this.getcategoryList();
     this.getsupplierList()
-    this.getBiglist();
     if(this.$route.query.id){
       axios.post(goodsSelectById+'?id='+this.$route.query.id).then(
         data=>{
           this.postData=data;
+          this.categoryId = []
+          this.categoryId.push(data.bigCategoryId,data.secondaryCategoryId,data.categoryId)
         }
       )
     }
   },
   methods: {
-      getBiglist() {
-      axios.get(category).then(data => {
-        this.options = data;
-        this.options.map(v=>{
-          v.children = [];
-        })
-
-      });
-    },
     getsupplierList(){
       axios.post(supplierSelectAll).then(data=>{
         console.log(data,'厂商')
@@ -168,14 +151,28 @@ export default {
       })
     },
     getcategoryList(){
-      axios.get(categoryList).then(data=>{
+      axios.get(bigCategorySelectAll).then(data=>{
         console.log(data);
         this.categoryList=data;
+        this.categoryList.map(v=>{
+          v.name = v.bigCategoryName
+          v.children = v.secondaryCategoryDTOS
+          v.children.map(v1=>{
+            v1.children = v1.categoryDTOS
+            v1.name = v1.secondaryCategoryName;
+            v1.children.map(v2=>{
+              v2.name = v2.categoryName;
+            })
+          })
+        })
       })
     },
     postBtn(formName){
        this.$refs[formName].validate(valid => {
         if (valid) {
+          console.log(this.categoryId)
+          this.postData.categoryId=this.categoryId[this.categoryId.length-1]
+          console.log(this.postData)
           if(this.$route.query.id){
               axios.put(goodsUpdate,this.postData).then(data=>{
             console.log(data);

@@ -98,12 +98,12 @@
             <div>
               <span>{{scope.row.goodsNumber?scope.row.goodsNumber*scope.row.goodsDTO.goodsPrice:''}}</span>
             </div>
-          </template> 
+          </template>
         </el-table-column>
-     
+
     </el-table>
      <el-row class="btnBox">
-        
+
         <el-button @click="back">返回</el-button>
       </el-row>
   </div>
@@ -133,12 +133,7 @@ export default {
           console.log(data);
         });
     },
-    Btn() {
-      this.$router.push({
-        path: "/Index/Markey",
-        query: {}
-      });
-    }
+
   }
 };
 </script>

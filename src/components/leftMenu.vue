@@ -13,7 +13,7 @@
           <el-menu-item index="/Index/goodsManage">商品管理</el-menu-item>
           <el-menu-item index="/Index/categoriesManage">分类管理</el-menu-item>
         </el-submenu>
-         <el-submenu index="2">
+         <el-submenu index="2" v-if="this.$store.state.loading.user.roleDTOS[0].role=='administrators'">
           <template slot="title">
             <span>系统管理</span>
           </template>
@@ -51,6 +51,9 @@
 export default {
   data() {
     return {};
+  },
+  created() {
+    console.log(this.$store.state.loading.user.roleDTOS[0].role)
   }
 };
 </script>
