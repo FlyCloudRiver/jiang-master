@@ -83,8 +83,8 @@
         </el-form-item>
         <el-form-item label="用户权限:">
           <el-select v-model="updateData.roleListId">
-            <el-option value="1" label="超级管理员"></el-option>
-            <el-option value="2" label="管理员"></el-option>
+            <el-option :value="1" label="超级管理员"></el-option>
+            <el-option :value="2" label="管理员"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="新密码:">
@@ -155,7 +155,7 @@
           name: row.name,
           username: row.username,
           password: row.password,
-          roleListId:row.roleDTOS[0].name,
+          roleListId:row.roleDTOS[0].id,
         };
       },
       /*分页显示用户*/

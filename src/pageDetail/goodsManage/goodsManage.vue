@@ -34,12 +34,8 @@
         </template>
       </el-table-column>
       <el-table-column label="商品编码" prop="goodsCode"></el-table-column>
-      <el-table-column label="商类类别" prop="name">
-        <template slot-scope="scope">
-          <div>
-            <span>{{scope.row.categoryName}}</span>
-          </div>
-        </template>
+      <el-table-column label="商类类别" prop="categoryName">
+
       </el-table-column>
       <!--<el-table-column label="商品规格" prop="goodsSpecification"></el-table-column>-->
       <el-table-column label="商品名" prop="goodsName"></el-table-column>
@@ -53,7 +49,7 @@
 </template>
 <script>
 import axios from "../../api/axios.js";
-import { goodsSelect ,goodsDelete,supplierSelectAll,categoryList} from "../../api/address.js";
+import { goodsSelect ,goodsDelete} from "../../api/address.js";
 import paging from "../../components/paging.vue";
 export default {
    components: {
@@ -62,8 +58,7 @@ export default {
   data() {
 
     return {
-       categoryList:[],
-      supplierList:[],
+
       pageNum:'',
       theQuery: {
         categoryId: null,
@@ -82,8 +77,7 @@ export default {
   },
   created(){
     this.getList();
-     this.getcategoryList();
-    this.getsupplierList()
+
   },
   methods: {
 

@@ -3,7 +3,7 @@
     <div class="loadingBox">
         <el-form label-position="right" label-width="0px" :inline="true" :model="loadData" :rules="rules" ref="loadData">
             <el-form-item label="" prop="username">
-              <el-input placeholder="请输入用户名" v-model="loadData.username" ></el-input>
+              <el-input placeholder="请输入用户名" v-model="loadData.username"></el-input>
             </el-form-item>
             <el-form-item label="" prop="password">
               <el-input placeholder="请输入密码" v-model="loadData.password" type="password"></el-input>
@@ -74,6 +74,8 @@ export default {
   .el-button{
     width: 400px;
     font-size: 23px;
+    color: black;
+    background-color:rgba(0,152,50,0.3);
   }
  /deep/ .el-input{
     width: 400px;
@@ -81,6 +83,9 @@ export default {
     height: 50px!important;
   /deep/ .el-input__inner {
      height: 50px;
+    //background-color:transparent;
+    background-color:rgba(0,152,50,0.3);
+    //border:0;
    }
   }
 
