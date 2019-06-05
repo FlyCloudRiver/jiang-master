@@ -69,14 +69,6 @@
           </div>
         </template>
       </el-table-column>
-      
-      <!-- <el-table-column label="生产日期" prop="goodsDate">
-        <template slot-scope="scope">
-          <div>
-            <span>{{scope.row.goodsDTO.goodsDate}}</span>
-          </div>
-        </template>
-      </el-table-column> -->
 
       <el-table-column label="单价" prop="goodsPrice">
         <template slot-scope="scope">
@@ -92,29 +84,24 @@
             </div>
           </template>
         </el-table-column>
-      <!-- <el-table-column label="保质期" prop="goodsShelfLife">
-        <template slot-scope="scope">
-          <div>
-            <span>{{scope.row.goodsDTO.goodsShelfLife}}</span>
-          </div>
-        </template>
-      </el-table-column> -->
 
-       <el-table-column label="商品数量" prop="goodsNumber"> </el-table-column>
-      <el-table-column label="商品总价" prop="name">
-          <template slot-scope="scope">
-            <div>
-              <span>{{scope.row.goodsNumber?scope.row.goodsNumber*scope.row.goodsDTO.goodsPrice:''}}</span>
-            </div>
-          </template> 
-        </el-table-column>
-      <!-- <el-table-column label="数量" prop="goodsNumber">
+
+      <!-- <el-table-column label="商品数量" prop="goodsNumber"> </el-table-column>-->
+      <el-table-column label="商品数量" prop="num">
         <template slot-scope="scope">
           <div>
             <el-input v-model="scope.row.goodsNumber"></el-input>
           </div>
         </template>
-      </el-table-column> -->
+      </el-table-column>
+      <el-table-column label="商品总价" prop="name">
+          <template slot-scope="scope">
+            <div>
+              <span>{{scope.row.goodsNumber?scope.row.goodsNumber*scope.row.goodsDTO.goodsPrice:''}}</span>
+            </div>
+          </template>
+        </el-table-column>
+
     </el-table>
   <el-row class="btnBox">
         <el-button @click="postBtn('detailData')">提交</el-button>

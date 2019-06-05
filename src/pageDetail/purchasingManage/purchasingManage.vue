@@ -32,7 +32,7 @@
           <div>
             <el-button type="text" @click="detailBtn(scope.row.id)">查看</el-button>
             <el-button type="text" @click="updateBtn(scope.row.id)" v-if="!scope.row.storage">编辑</el-button>
-             <el-button type="text" @click="deleteBtn(scope.row)" v-if="!scope.row.storage">删除</el-button>
+             <el-button type="text" @click="deleteBtn(scope.row)" v-if="!scope.row.storage" style="color: red">删除</el-button>
             <el-button type="text" @click="stoBtn(scope.row)" v-if="!scope.row.storage">入库</el-button>
           </div>
         </template>

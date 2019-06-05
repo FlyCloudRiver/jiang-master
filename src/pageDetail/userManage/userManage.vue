@@ -14,8 +14,9 @@
       <el-table-column label="操作" width="120">
         <template slot-scope="scope">
           <div>
-            <el-button type="text" @click="detailBtn(scope.row.uid)">删除</el-button>
-            <el-button type="text" @click="updateBtn(scope.row)">修改</el-button>
+            <el-button type="text" @click="updateBtn(scope.row)">编辑</el-button>
+            <el-button type="text" @click="detailBtn(scope.row.uid)" style="color: red">删除</el-button>
+
           </div>
         </template>
       </el-table-column>

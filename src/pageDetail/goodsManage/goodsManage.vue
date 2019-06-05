@@ -29,7 +29,7 @@
         <template slot-scope="scope">
           <div>
             <el-button type="text" @click="mobileBtn(scope.row.id)">编辑</el-button>
-            <el-button type="text" @click="deleteBtn(scope.row.id)">删除</el-button>
+            <el-button type="text" @click="deleteBtn(scope.row.id)" style="color: red">删除</el-button>
           </div>
         </template>
       </el-table-column>

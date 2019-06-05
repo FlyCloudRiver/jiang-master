@@ -34,7 +34,7 @@
           <div>
             <el-button type="text" @click="detailBtn(scope.row.id)">查看</el-button>
             <el-button type="text" @click="mobileBtn(scope.row.id)"  v-if="!scope.row.storage">编辑</el-button>
-            <el-button type="text" @click="deleteBtn(scope.row.id)" v-if="!scope.row.storage">删除</el-button>
+            <el-button type="text" @click="deleteBtn(scope.row.id)" v-if="!scope.row.storage" style="color: red">删除</el-button>
             <el-button type="text" @click="chuBtn(scope.row.id)" v-if="!scope.row.storage">出库</el-button>
           </div>
         </template>
