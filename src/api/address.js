@@ -15,6 +15,8 @@ export const goodsUpdate='/goods/update'//修改
 export const goodsSelectById='/goods/selectById'//查询ById
 //分类
 export const bigCategorySelectAll='/bigCategory/selectAll'//查询类list
+export const selectDynamicCases='/bigCategory/selectDynamicCases'//动态分页查询
+
 export const selectBigCategoryById='/bigCategory/selectOne'
 export const insertAll='/allCategory/insert'
 export const bigCategoryInsert='/bigCategory/insert'//添加大类
@@ -59,4 +61,4 @@ export const provinceSelect='/province/select'//查找省份
 export const provinceCity = '/province/selectCity'//查找市
 export const provinceArea = '/province/selectArea'//查找区县
 //查看报表
-export const report = '/storeroom/selectReport'
+export const report = '/report/selectReport'

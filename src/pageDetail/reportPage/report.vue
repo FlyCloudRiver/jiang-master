@@ -48,7 +48,7 @@
       <el-table-column label="出入库时间" prop="updateTime"></el-table-column>
       <el-table-column label="库存数量" prop="amount"></el-table-column>
     </el-table>
-
+    <paging v-on:pageFlag="pageFlag" :pageNum="pageNum" :theQuery="theQuery"></paging>
   </div>
 </template>
 <script>
@@ -56,11 +56,15 @@
   import { report } from "../../api/address.js";
   export default {
     data() {
+
       return {
+        pageNum:'',
         theQuery: {
-          startTime:'2018-08-08',
-          endTime:'2019-05-30',
-          type:'商品入库'
+        endTime: null,
+        pageNum: 1,
+        pageSize: 7,
+        startTime: null,
+        type: "商品出库"
         },
         dataList: [
         ]
@@ -70,10 +74,17 @@
       this.getList();
     },
     methods: {
+      //分页
+      pageFlag: function(data) {
+        this.theQuery.pageNum = data.pageNo;
+        this.theQuery.pageSize = data.pageSize;
+        this.getList();
+      },
       getList() {
-        axios.post(report+'?startTime='+this.theQuery.startTime+'&endTime='+this.theQuery.endTime+'&type='+this.theQuery.type).then(data => {
+        axios.post(report,this.theQuery).then(data => {
           console.log(data);
-          this.dataList=data
+          this.dataList=data.content;
+          this.pageNum = data.totalElements;
         });
       },
 

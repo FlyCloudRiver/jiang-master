@@ -163,14 +163,14 @@
         </template>
       </el-table-column>
     </el-table>
-
+    <paging v-on:pageFlag="pageFlag" :pageNum="pageNum" :theQuery="theQuery"></paging>
 
   </div>
 </template>
 <script>
 import axios from "../../api/axios.js";
 import {
-  bigCategorySelectAll,
+  selectDynamicCases,
   selectBigCategoryById,
   bigCategoryInsert,
   bigCategoryDelete,
@@ -191,7 +191,7 @@ export default {
     return {
       pageNum: "",
       theQuery: {
-        categoryName: "",
+        bigCategoryName: "",
         pageNum: 1,
         pageSize: 7
       },
@@ -219,6 +219,11 @@ export default {
 
   },
   methods: {
+    pageFlag: function(data) {
+      this.theQuery.pageNum = data.pageNo;
+      this.theQuery.pageSize = data.pageSize;
+      this.getList();
+    },
     addForm:function(id){
       this.bigId=id,
       this.items=[
@@ -257,9 +262,11 @@ export default {
       category.pop()
     },
     getList() {
-      axios.get(bigCategorySelectAll).then(data => {
-        this.dataList = data;
-        console.log(data)
+      axios.post(selectDynamicCases,this.theQuery).then(data => {
+        this.dataList = data.content;
+        console.log(data);
+        this.pageNum = data.totalElements;
+
       });
     },
     /*获取表单内容并提交*/
