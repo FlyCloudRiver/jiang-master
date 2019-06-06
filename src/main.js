@@ -10,8 +10,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import echarts from 'echarts'
 import paging from './components/paging.vue'
-Vue.prototype.$echarts = echarts 
+Vue.prototype.$echarts = echarts
 import store from './store/index'
+import MyTools from './unitl/myTools.js'
+Vue.prototype.$MyTools=MyTools
 Vue.use(Vuex)
 Vue.component('paging',paging)
 Vue.use(ElementUI)

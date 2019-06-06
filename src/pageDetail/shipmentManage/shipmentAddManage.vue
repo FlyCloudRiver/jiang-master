@@ -81,16 +81,7 @@
     <!-- 确认出库单 -->
     <div class="choseBbox" v-show="active==1">
       <el-form label-position="right" label-width="100px" :inline="true">
-        <!--
-                <el-form-item label="销售单号：">
-                  <el-input v-model="postDate.shipmentCode"></el-input>
-                </el-form-item> -->
-        <!-- <el-form-item label="销售方式：">
-          <el-input v-model="postDate.salesSlipMethod"></el-input>
-        </el-form-item>
-        <el-form-item label="到货时间：">
-          <el-date-picker v-model="postDate.arrivalTime" type="date" placeholder="选择日期"></el-date-picker>
-        </el-form-item> -->
+
       </el-form>
       <el-table :data="theSelection" style="width: 100%" border>
         <el-table-column label="序号" type="index" width="80"></el-table-column>
@@ -234,7 +225,12 @@
         this.active--;
       },
       nextBtn() {
-        this.active++;
+
+        if(this.theSelection.length>0){
+          this.active++;
+        }else{
+          this.$message.warning('请选择商品')
+        }
       },
       //选中商品时
       selection(list) {
