@@ -33,7 +33,7 @@
       <el-table-column label="库存数量" prop="amount"></el-table-column>
       <el-table-column label="更新时间" prop="updateTime"></el-table-column>
     </el-table>
-
+    <paging v-on:pageFlag="pageFlag" :pageNum="pageNum" :theQuery="theQuery"></paging>
   </div>
 </template>
 <script>
@@ -43,10 +43,8 @@
     data() {
       return {
         theQuery: {
-
           pageNum: 1,
           pageSize: 7,
-
         },
         dataList: [
         ]
@@ -56,10 +54,16 @@
       this.getList();
     },
     methods: {
+      pageFlag: function(data) {
+        this.theQuery.pageNum = data.pageNo;
+        this.theQuery.pageSize = data.pageSize;
+        this.getList();
+      },
       getList() {
         axios.post(storeroomSelect+'?pageNum='+this.theQuery.pageNum+'&pageSize='+this.theQuery.pageSize).then(data => {
           console.log(data);
           this.dataList=data.content
+          this.pageNum = data.totalElements;
         });
       },
       //详情
