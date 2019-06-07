@@ -207,20 +207,30 @@
         });
       },
       postBtn() {
+        let flag = false
         this.theSelection.map((v, k) => {
-          let obj = {
-            goodsId: v.goodsDTO.id,
-            goodsNumber: v.num - 0,
-            goodsAmount:v.amount-0
-          };
-          this.postDate.shipmentDetailForms.push(obj);
+          if(v.num){
+            let obj = {
+              goodsId: v.goodsDTO.id,
+              goodsNumber: v.num - 0,
+              goodsAmount:v.amount-0
+            };
+            this.postDate.shipmentDetailForms.push(obj);
+          }else{
+            flag = true;
+            this.$message.warning('请输入商品数量')
+          }
+
         });
-        let data = this.postDate;
-        axios.post(shipmentInsert, data).then(data => {
-          console.log(data);
-          this.$message.success("添加成功");
-          this.$router.go(-1);
-        });
+        if(!flag){
+          let data = this.postDate;
+          axios.post(shipmentInsert, data).then(data => {
+            console.log(data);
+            this.$message.success("添加成功");
+            this.$router.go(-1);
+          });
+        }
+
       },
       deleteBtn(index, r) {
         this.theSelection.splice(index, 1);

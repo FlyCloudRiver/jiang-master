@@ -21,9 +21,7 @@
       </el-form>
 
     </div>
-    <!-- <el-row>
-      <el-button class="addBtn" @click="AddnewBtn">增加</el-button>
-    </el-row>-->
+
     <el-table :data="dataList" style="width: 100%" border>
       <el-table-column label="序号" type="index" width="80"></el-table-column>
      <!-- <el-table-column label="操作" width="180">

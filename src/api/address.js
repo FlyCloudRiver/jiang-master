@@ -29,7 +29,6 @@ export const categoryAndCategoryInsert='/allCategory/update'//更新中类和细
 
 
 export const categoryList='/category/selectAll'//查询细类所有
-export const secondaryCategoryUpdate='/secondaryCategory/update'//修改中类
 export const category='/category/selectAll'//查询
 //用户
 export const userInsert='/user/insert' //添加（用户名唯一）

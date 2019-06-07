@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <!--搜索表单-->
       <el-form label-position="right" label-width="100px" :inline="true">
         <el-form-item label="商品编号:">
           <el-input v-model="theQuery.goodsCode"></el-input>
@@ -14,15 +15,18 @@
         <el-form-item label="厂商名">
           <el-input v-model="theQuery.supplierName"></el-input>
         </el-form-item>
-
         <el-form-item label=" ">
           <el-button @click="getList">查询</el-button>
         </el-form-item>
       </el-form>
     </div>
+
+    <!--怎加功能按钮-->
     <el-row>
       <el-button class="addBtn" @click="AddnewBtn">增加</el-button>
     </el-row>
+
+    <!--列表-->
     <el-table :data="dataList" style="width: 100%" border>
       <el-table-column label="序号" type="index" width="80"></el-table-column>
       <el-table-column label="操作" width="180">
@@ -35,9 +39,7 @@
       </el-table-column>
       <el-table-column label="商品编码" prop="goodsCode"></el-table-column>
       <el-table-column label="商类类别" prop="categoryName">
-
       </el-table-column>
-      <!--<el-table-column label="商品规格" prop="goodsSpecification"></el-table-column>-->
       <el-table-column label="商品名" prop="goodsName"></el-table-column>
       <el-table-column label="计量单位" prop="goodsUnit"></el-table-column>
       <el-table-column label="进价" prop="goodsPrice"></el-table-column>
@@ -60,6 +62,7 @@ export default {
     return {
 
       pageNum:'',
+      /*搜索表单初值*/
       theQuery: {
         categoryId: null,
         categoryName:null,
@@ -72,6 +75,7 @@ export default {
         supplierId: null,
         supplierName:null
       },
+      /*列表显示数据*/
       dataList: []
     };
   },
@@ -113,10 +117,10 @@ export default {
       axios.post(goodsSelect,this.theQuery).then(data=>{
         console.log(data)
         this.dataList=data.content;
-
-          this.pageNum = data.totalElements;
+        this.pageNum = data.totalElements;
       });
     },
+    /*修改*/
     mobileBtn(row){
       this.$router.push({
         path: "/Index/addGoods",
@@ -132,12 +136,7 @@ export default {
         query: {}
       });
     },
-    Btn() {
-      this.$router.push({
-        path: "/Index/Markey",
-        query: {}
-      });
-    }
+
   }
 };
 </script>

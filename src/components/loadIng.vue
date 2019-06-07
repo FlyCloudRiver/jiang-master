@@ -41,6 +41,7 @@ export default {
           axios.post(userInfoLogin+'?password='+this.loadData.password+'&username='+this.loadData.username).then(data=>{
             console.log(data)
             if(data){
+              //将返回的用户存入session
               sessionStorage.setItem("user", JSON.stringify(data))
               this.$router.push({
                 path: "/Index/goodsManage",

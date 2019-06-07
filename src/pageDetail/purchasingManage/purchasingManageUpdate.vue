@@ -35,14 +35,12 @@
              <span>{{detailData.createTime}}</span>
             </el-form-item>
           </el-col>
-          <!-- <el-col :span="8">
-            <el-form-item label="是否出库：" prop="storage">
-              <span>{{detailData.storage?'是':'否'}}</span>
-            </el-form-item>
-          </el-col> -->
         </el-row>
       </el-form>
     </div>
+
+
+    <!--显示商品采购列表-->
     <el-row>
       <span>采购商品列表</span>
     </el-row>
@@ -84,7 +82,6 @@
             </div>
           </template>
         </el-table-column>
-
 
       <!-- <el-table-column label="商品数量" prop="goodsNumber"> </el-table-column>-->
       <el-table-column label="商品数量" prop="num">
@@ -155,12 +152,7 @@ export default {
           console.log(data);
         });
     },
-    Btn() {
-      this.$router.push({
-        path: "/Index/Markey",
-        query: {}
-      });
-    }
+
   }
 };
 </script>

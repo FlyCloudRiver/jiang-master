@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <!--查询表单-->
       <el-form label-position="right" label-width="100px" :inline="true">
         <el-form-item label="订单编号:">
           <el-input v-model="theQuery.purchaseCode"></el-input>
@@ -22,15 +23,19 @@
         </el-form-item>
       </el-form>
     </div>
+
     <el-row>
       <el-button class="addBtn" @click="AddnewBtn">增加</el-button>
     </el-row>
+
+    <!--数据列表-->
     <el-table :data="dataList" style="width: 100%" border>
       <el-table-column label="序号" type="index" width="80"></el-table-column>
       <el-table-column label="操作" width="200">
         <template slot-scope="scope">
           <div>
             <el-button type="text" @click="detailBtn(scope.row.id)">查看</el-button>
+            <!--判断是否入库  如果没有入库 可以编辑 删除 入库-->
             <el-button type="text" @click="updateBtn(scope.row.id)" v-if="!scope.row.storage">编辑</el-button>
              <el-button type="text" @click="deleteBtn(scope.row.id)" v-if="!scope.row.storage" style="color: red">删除</el-button>
             <el-button type="text" @click="stoBtn(scope.row)" v-if="!scope.row.storage">入库</el-button>
@@ -120,6 +125,7 @@ export default {
       });
 
     },
+    /*获取初始值表单*/
     getList() {
       axios.post(purchaseSelect, this.theQuery).then(data => {
         console.log(data);
@@ -141,6 +147,7 @@ export default {
         query: { id: row }
       });
     },
+    /*编辑*/
     updateBtn(row) {
       this.$router.push({
         path: "/Index/purchasingManageUpdate",

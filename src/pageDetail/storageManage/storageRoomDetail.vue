@@ -1,26 +1,9 @@
 <template>
   <div>
     <div>
+      <!--查询条件 如果有-->
       <el-form label-position="right" label-width="100px" :inline="true">
-        <!-- <el-row>
-          <el-col :span="8">
-            <el-form-item label="总库存：">
-              <span>{{this.detailData.amount}}</span>
-            </el-form-item>
-          </el-col>
-          <el-col :span="8">
-            <el-form-item label="更新时间：">
-             <span>{{this.detailData.updateTime}}</span>
-            </el-form-item>
-          </el-col>
-            <el-col :span="8">
-            <el-form-item label="操作人：">
-                <span>{{this.detailData.person}}</span>
-            </el-form-item>
-          </el-col>
 
-
-        </el-row> -->
       </el-form>
     </div>
     <el-row>
@@ -108,12 +91,7 @@
           this.detailData=data;
         })
       },
-      Btn() {
-        this.$router.push({
-          path: "/Index/totalInventory",
-          query: {}
-        });
-      }
+
     }
   };
 </script>

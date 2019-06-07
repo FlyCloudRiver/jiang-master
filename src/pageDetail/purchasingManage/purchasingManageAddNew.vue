@@ -122,9 +122,11 @@ export default {
         this.dataList = data.content;
       });
     },
+    /*生成采购单*/
     postBtn(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
+          let flag = false
           this.theSelection.map((v,k)=>{
             if(v.num){
               let obj={
@@ -132,14 +134,20 @@ export default {
                 goodsNumber:v.num
               }
               this.postData.purchaseDetailForms.push(obj)
+            }else{
+               flag = true
+              this.$message.warning('请输入商品数量')
             }
           })
           console.log(this.postData)
-          axios.post(purchaseIndert,this.postData).then(data=>{
+          if(!flag){
+            axios.post(purchaseIndert,this.postData).then(data=>{
 
-            this.$message.success('添加成功')
-             this.$router.go(-1);
-          })
+              this.$message.success('添加成功')
+              this.$router.go(-1);
+            })
+          }
+
 
         }})
 

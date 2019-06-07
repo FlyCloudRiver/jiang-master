@@ -19,18 +19,16 @@ axios.interceptors.request.use(
 
 // axios.interceptors.response.headers()
 //添加响应拦截器
-
+//拦截后台返回 状态值
 axios.interceptors.response.use(
     res => {
         if(res.status == 200){
             if(res.data.code=='0'){
                 return res.data.data
             }else{
-
                 Message.error(res.data.msg);
                 return Promise.reject(res);
             }
-
         }else {
             return Promise.reject(res)
     }
@@ -40,7 +38,7 @@ axios.interceptors.response.use(
     }
 )
 
-
+//封装的请求的方法
 export default {
     baseURL: axios.defaults.baseURL,
     get: function (url, data = {}, headers) {

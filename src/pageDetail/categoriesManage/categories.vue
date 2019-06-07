@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <!--搜索表单-->
       <!--<el-form label-position="right" label-width="100px" :inline="true">
         <el-form-item label="细类名称:">
           <el-input v-model="theQuery.categoryName"></el-input>
@@ -9,7 +10,6 @@
           <el-button @click="getList">查询</el-button>
         </el-form-item>
       </el-form>-->
-
     </div>
 
    <!-- 添加中类和细类-->
@@ -62,16 +62,12 @@
                 <el-form-item label="中类名称" >
                   <el-input size="mini" v-model="item1.secondaryCategoryName" style="width: 350px"></el-input>
                   <el-button type="danger" icon="el-icon-delete" circle  @click="deleteSecondCategory(item1.id,secondAndCategory.id)" size="mini"></el-button><br><br>
-
                 </el-form-item>
                 <el-form-item label="细类名称"  v-for="(item2,i2) of item1.categoryDTOS" :key="i2">
                   <template>
                     <div>
                       <el-input size="mini" v-model="item2.categoryName" style="width: 350px"></el-input>
                       <el-button type="danger" icon="el-icon-delete" circle  @click="deleteCategory(item2.id,secondAndCategory.id)"></el-button><br><br>
-
-                    <!--  <el-button size="mini" @click="addCategory(item2.id,secondAndCategory.id)">添加细类</el-button>
-                      <el-button type="danger" size="mini" @click="deleteCategory(item2.id,secondAndCategory.id)">删除细类</el-button>-->
                     </div>
                   </template>
                 </el-form-item>
@@ -169,6 +165,7 @@
 </template>
 <script>
 import axios from "../../api/axios.js";
+/*地址*/
 import {
   selectDynamicCases,
   selectBigCategoryById,
@@ -190,6 +187,7 @@ export default {
   data() {
     return {
       pageNum: "",
+      /*动态分页查询参数*/
       theQuery: {
         bigCategoryName: "",
         pageNum: 1,
@@ -216,7 +214,6 @@ export default {
   },
   created() {
     this.getList();
-
   },
   methods: {
     pageFlag: function(data) {
@@ -261,6 +258,7 @@ export default {
     deleteInputCategory(category){
       category.pop()
     },
+    /*加载初始数据*/
     getList() {
       axios.post(selectDynamicCases,this.theQuery).then(data => {
         this.dataList = data.content;
@@ -366,6 +364,7 @@ export default {
       });
 
     },
+    /*更新大类弹出框*/
     updateBigCategory(id,name){
       this.bigId=id
       this.bigCategoryName=name

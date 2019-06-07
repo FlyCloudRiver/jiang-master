@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <!--修改添加表单-->
       <el-form
         label-position="right"
         label-width="120px"
@@ -9,7 +10,6 @@
         ref="postData"
         :rules="rules"
       >
-
         <el-form-item label="商品细类:">
             <el-cascader
               :options="categoryList"
@@ -65,6 +65,7 @@ export default {
         value:'id',
         children: "children"
       },
+      /*修改和增加的表单数据*/
       postData: {
         categoryId: '', //细类ID
         goodsCode: "", //商品编号
@@ -76,6 +77,9 @@ export default {
         goodsUnit:'',
         supplierId: "" //厂商ID
       },
+      /*prop  表单验证名字*/
+      /*trigger: ‘blur’ 表示“当失去焦点时（光标不显示的时候），触发此提示” */
+      /*手动输入或者通过弹出框选择之后触发 */
       rules: {
         categoryId: [
           { required: true, message: "请选择", trigger: "change" }
@@ -98,32 +102,11 @@ export default {
           goodsPrice: [
           { required: true, message: "请输入", trigger: "blur" }
         ],
-
           supplierId: [
           { required: true, message: "请输入", trigger: "blur" }
         ],
       },
 
-      categories: [
-        {
-          value: "",
-          label: ""
-        },
-        {
-          value: "",
-          label: ""
-        },
-        {
-          value: "",
-          label: ""
-        },
-        {
-          value: "",
-          label: ""
-        }
-      ], //商品类别
-      dataList: [
-      ]
     };
   },
   created(){
@@ -146,10 +129,12 @@ export default {
         this.supplierList=data
       })
     },
+    /*三级联动获取类别*/
     getcategoryList(){
       axios.get(bigCategorySelectAll).then(data=>{
         console.log(data);
         this.categoryList=data;
+
         this.categoryList.map(v=>{
           v.name = v.bigCategoryName
           v.children = v.secondaryCategoryDTOS
@@ -165,18 +150,21 @@ export default {
     },
     postBtn(formName){
        this.$refs[formName].validate(valid => {
+
         if (valid) {
           console.log(this.categoryId)
           this.postData.categoryId=this.categoryId[this.categoryId.length-1]
           console.log(this.postData)
+          /*如果参数有ID   跳转页面过来的参数*/
           if(this.$route.query.id){
+              //修改接口
               axios.put(goodsUpdate,this.postData).then(data=>{
-            console.log(data);
-            this.$router.go(-1);})
+              console.log(data);
+             this.$router.go(-1);})
           }else{
                  axios.post(goodsInsert,this.postData).then(data=>{
-            console.log(data);
-            this.$router.go(-1);
+                 console.log(data);
+                this.$router.go(-1);
           })
           }
 
@@ -186,26 +174,7 @@ export default {
     backBtn() {
       this.$router.go(-1);
     },
-    //新增
-    AddnewBtn() {
-      this.$router.push({
-        path: "/Index/refundManageAddNew",
-        query: {}
-      });
-    },
-    //详情
-    detailBtn() {
-      this.$router.push({
-        path: "/Index/refundManageDetail",
-        query: {}
-      });
-    },
-    Btn() {
-      this.$router.push({
-        path: "/Index/Markey",
-        query: {}
-      });
-    }
+
   }
 };
 </script>
