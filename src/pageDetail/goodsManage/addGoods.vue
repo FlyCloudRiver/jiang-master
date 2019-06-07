@@ -9,9 +9,7 @@
         ref="postData"
         :rules="rules"
       >
-        <!-- <el-form-item label="商品编号:" prop="goodsCode">
-          <el-input v-model="postData.goodsCode"></el-input>
-        </el-form-item> -->
+
         <el-form-item label="商品细类:">
             <el-cascader
               :options="categoryList"
@@ -22,9 +20,7 @@
         <el-form-item label="商品名称:" prop="goodsName">
           <el-input v-model="postData.goodsName"></el-input>
         </el-form-item>
-       <!-- <el-form-item label="商品规格:" prop="goodsSpecification">
-          <el-input v-model="postData.goodsSpecification"></el-input>
-        </el-form-item>-->
+
         <el-form-item label="计量单位:" prop="goodsUnit">
           <el-input v-model="postData.goodsUnit"></el-input>
         </el-form-item>
@@ -110,20 +106,20 @@ export default {
 
       categories: [
         {
-          value: "A类",
-          label: "A类"
+          value: "",
+          label: ""
         },
         {
-          value: "B类",
-          label: "B类"
+          value: "",
+          label: ""
         },
         {
-          value: "C类",
-          label: "C类"
+          value: "",
+          label: ""
         },
         {
-          value: "D类",
-          label: "D类"
+          value: "",
+          label: ""
         }
       ], //商品类别
       dataList: [
