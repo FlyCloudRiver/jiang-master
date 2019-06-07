@@ -89,11 +89,12 @@ export default {
       }).then(() => {
         axios.delete(goodsDelete+'?id='+row).then(data=>{
           this.getList();
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
         })
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
-        });
+
       }).catch(() => {
         this.$message({
           type: 'info',

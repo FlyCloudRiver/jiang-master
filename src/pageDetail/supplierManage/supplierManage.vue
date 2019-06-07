@@ -161,7 +161,8 @@ export default {
         ],
         /*supplierWeb: [{ required: true, message: "请输入", trigger: "blur" }],*/
         prohibit: [{ required: true, message: "请输入", trigger: "blur" }],
-        supplierPhone: [{ required: true, validator: this.$MyTools.regInputPhone, trigger: "blur" }],
+       /* supplierPhone: [{ required: true, validator: this.$MyTools.regInputPhone, trigger: "blur" }],*/
+        supplierPhone: [{ required: true, message: "请输入", trigger: "blur" }],
         supplierName: [{ required: true, message: "请输入", trigger: "blur" }]
       }
     };
@@ -247,11 +248,12 @@ export default {
       }).then(() => {
         axios.delete(supplierDelete + "?id=" + row.id).then(data => {
           this.getList();
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
         });
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
-        });
+
       }).catch(() => {
         this.$message({
           type: 'info',

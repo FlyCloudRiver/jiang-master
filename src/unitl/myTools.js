@@ -68,7 +68,7 @@ export default {
 		if (value === ""||value == null) {
 			callback(new Error("请输入手机号"));
 		} else {
-			if (/^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/.test(value)) {
+			if (/^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/.test(value)) {
 				callback();
 			} else {
 				callback(new Error("请输入正确格式"));
