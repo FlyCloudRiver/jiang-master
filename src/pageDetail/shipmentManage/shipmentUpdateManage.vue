@@ -81,11 +81,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="库存" prop="storageNum"></el-table-column>
+      <el-table-column label="库存" prop="goodsAmount"></el-table-column>
+
       <el-table-column label="商品数量" prop="num">
         <template slot-scope="scope">
           <div>
-            <el-input v-model="scope.row.goodsNumber"></el-input>
+            <el-input v-model="scope.row.goodsNumber" type='number' @input="inpuNum(scope.row)"
+            ></el-input>
           </div>
         </template>
       </el-table-column>
@@ -123,6 +125,15 @@
       // this.getsupplierList();
     },
     methods: {
+      //输入数量验证
+      inpuNum(row){
+        console.log(row)
+        if(row.goodsNumber>row.goodsAmount){
+          row.goodsNumber=null;
+          this.$message.warning('商品数量不能大于库存，请重新输入')
+        }
+      },
+
       getsupplierList() {
         let bosy = {
           pageNum: 1,
@@ -154,7 +165,7 @@
             this.dataList.map((v, k) => {
               let bb = {
                 pageNum: 1,
-                pageSize: 20,
+                pageSize: 7,
                 goodsName: v.goodsDTO.goodsName
               };
               axios.post(roomList, bb).then(data => {

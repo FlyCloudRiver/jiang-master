@@ -56,7 +56,7 @@
         <el-table-column label="商品采购数量" prop="name">
           <template slot-scope="scope">
             <div>
-              <el-input v-model="scope.row.num"></el-input>
+              <el-input v-model="scope.row.num" type='number'  ></el-input>
             </div>
           </template>
         </el-table-column>
@@ -115,6 +115,7 @@ export default {
     this.getList();
   },
   methods: {
+
     getList() {
       axios.post(goodsSelect, this.theQuery).then(data => {
         console.log(data);

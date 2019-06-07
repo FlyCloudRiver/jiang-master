@@ -90,7 +90,7 @@
       <el-table-column label="商品数量" prop="num">
         <template slot-scope="scope">
           <div>
-            <el-input v-model="scope.row.goodsNumber"></el-input>
+            <el-input v-model="scope.row.goodsNumber" type='number'></el-input>
           </div>
         </template>
       </el-table-column>

@@ -142,7 +142,7 @@
         <el-table-column label="商品数量" prop="num">
           <template slot-scope="scope">
             <div>
-              <el-input v-model="scope.row.num"></el-input>
+              <el-input v-model="scope.row.num" type='number' @input="inpuNum(scope.row)"></el-input>
             </div>
           </template>
         </el-table-column>
@@ -187,6 +187,14 @@
       this.getList();
     },
     methods: {
+      //输入数量验证
+      inpuNum(row){
+        console.log(row)
+        if(row.num>row.amount){
+          row.num=null;
+          this.$message.warning('商品数量不能大于库存，请重新输入')
+        }
+      },
       getList() {
         let body = {
           pageNum: 1,
@@ -199,12 +207,11 @@
         });
       },
       postBtn() {
-        // this.$router.go(-1);
-
         this.theSelection.map((v, k) => {
           let obj = {
             goodsId: v.goodsDTO.id,
-            goodsNumber: v.num - 0
+            goodsNumber: v.num - 0,
+            goodsAmount:v.amount-0
           };
           this.postDate.shipmentDetailForms.push(obj);
         });

@@ -56,4 +56,9 @@ html {
 .el-input__inner{
   height: 35px;
 }
+  .el-table{
+    .el-input{
+      width: 80%;
+    }
+  }
 </style>
