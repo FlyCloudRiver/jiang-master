@@ -28,11 +28,7 @@
              <span>{{detailData.createTime}}</span>
             </el-form-item>
           </el-col>
-          <!-- <el-col :span="8">
-            <el-form-item label="是否出库：">
-              <span>{{detailData.storage?'是':'否'}}</span>
-            </el-form-item>
-          </el-col> -->
+
         </el-row>
       </el-form>
     </div>
@@ -63,13 +59,7 @@
             </div>
           </template>
         </el-table-column>
-      <!-- <el-table-column label="生产日期" prop="goodsDate">
-        <template slot-scope="scope">
-          <div>
-            <span>{{scope.row.goodsDTO.goodsDate}}</span>
-          </div>
-        </template>
-      </el-table-column> -->
+
 
       <el-table-column label="单价" prop="goodsPrice">
         <template slot-scope="scope">
@@ -85,13 +75,7 @@
             </div>
           </template>
         </el-table-column>
-      <!-- <el-table-column label="保质期" prop="goodsShelfLife">
-        <template slot-scope="scope">
-          <div>
-            <span>{{scope.row.goodsDTO.goodsShelfLife}}</span>
-          </div>
-        </template>
-      </el-table-column> -->
+
        <el-table-column label="商品数量" prop="goodsNumber"> </el-table-column>
       <el-table-column label="商品总价" prop="name">
           <template slot-scope="scope">
