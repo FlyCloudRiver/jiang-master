@@ -1,13 +1,18 @@
 <template>
   <div>
+
+    <!--查询条件-->
     <div>
       <el-form label-position="right" label-width="100px" :inline="true">
 
       </el-form>
     </div>
+
+
     <el-row>
-      <el-button class="addBtn" @click="AddnewBtn">增加</el-button>
+      <el-button class="addBtn" @click="addNewBtn">增加</el-button>
     </el-row>
+
     <!--显示列表-->
     <el-table :data="dataList" style="width: 100%" border>
       <el-table-column label="序号" type="index" width="80"></el-table-column>
@@ -16,7 +21,6 @@
           <div>
             <el-button type="text" @click="updateBtn(scope.row)">编辑</el-button>
             <el-button type="text" @click="detailBtn(scope.row.uid)" style="color: red">删除</el-button>
-
           </div>
         </template>
       </el-table-column>
@@ -26,7 +30,7 @@
       <el-table-column label="角色" prop="roleListId">
         <template slot-scope="scope">
           <div>
-            <span>{{scope.row.roleDTOS.length>0?scope.row.roleDTOS[0].role:''}}</span>
+            <span>{{scope.row.roleDTOS.length>0?scope.row.roleDTOS[0].description:''}}</span>
           </div>
         </template>
       </el-table-column>
@@ -59,7 +63,7 @@
           </el-select>
         </el-form-item>
       </el-form>
-      <el-row class="dialoBtnBox">
+      <el-row class="dialogBtnBox">
         <el-button @click="addBtn('addData')">提交</el-button>
         <el-button>取消</el-button>
       </el-row>
@@ -91,7 +95,7 @@
           <el-input v-model="updateData.password" type="password"></el-input>
         </el-form-item>
       </el-form>
-      <el-row class="dialoBtnBox">
+      <el-row class="dialogBtnBox">
         <el-button @click="updatepostBtn('updateData')">提交</el-button>
         <el-button>取消</el-button>
       </el-row>
@@ -188,7 +192,7 @@
         });
       },
       //新增
-      AddnewBtn() {
+      addNewBtn() {
         this.dialogVisibleAdd = true;
       },
       //详情
@@ -197,12 +201,7 @@
           this.getList();
         });
       },
-      Btn() {
-        this.$router.push({
-          path: "/Index/Markey",
-          query: {}
-        });
-      }
+
     }
   };
 </script>
@@ -210,7 +209,7 @@
   .addBtn {
     margin: 10px 0px;
   }
-  .dialoBtnBox {
+  .dialogBtnBox {
     text-align: center;
   }
 </style>
