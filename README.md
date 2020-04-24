@@ -1,3 +1,7 @@
+
+# 前端vue
+
+这是商品管理系统的前端断vue部分。
 # vue-liuyizhou
 
 > A Vue.js project
